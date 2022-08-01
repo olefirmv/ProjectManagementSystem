@@ -1,0 +1,192 @@
+﻿<UserControl x:Class="PMS.MVVM.View.EmployeeListPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="896" d:DesignWidth="1893">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="92" />
+            <RowDefinition Height="176" />
+            <RowDefinition Height="72" />
+            <RowDefinition Height="446*" />
+            <RowDefinition Height="165*" />
+
+        </Grid.RowDefinitions>
+        <TextBlock
+            Margin="708,26,689,6"
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            FontSize="45"
+            Text="Менеджер сотрудников"
+            VerticalAlignment="Center" Height="60" Width="496" />
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="20,0,0,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Выбор сотрудника:"
+                           FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <ComboBox x:Name="EmployeeID"
+                          Width="500"
+                          FontSize="28"
+                          Height="36"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="10,0,0,0"
+                          ItemsSource="{Binding EmployeeList}"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding EmployeeID}"
+                          Style="{StaticResource ComboBoxFlatStyle}">
+                </ComboBox>
+                <Button
+                    Content="Добавить сотрудника" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center" 
+                    Width="280" 
+                    Margin="19.4,0,0,0"
+                    FontSize="28"
+                    Command="{Binding AddEmployeeCommand}"
+                    CommandParameter="{Binding }"
+                Style="{StaticResource RoundedButtonStyle}"
+                Background="#FFB2EAFF" Height="43" />
+
+            </StackPanel>
+            <Grid Margin="0,10,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="313*"/>
+                    <ColumnDefinition Width="390*"/>
+                    <ColumnDefinition Width="285*"/>
+                    <ColumnDefinition Width="349*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical"
+                            Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Просмотр всего проекта"
+                           FontSize="24" Margin="0,0,0,10"/>
+                    <CheckBox HorizontalAlignment="Center" 
+                              VerticalAlignment="Center"
+                              x:Name="ReadFull"
+                              IsChecked="{Binding ReadFull}">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical"
+                        Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Просмотр одного подэтапа"
+                        FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10"/>
+                    <CheckBox HorizontalAlignment="Center" 
+                              VerticalAlignment="Center"
+                              x:Name="ReadOne"
+                              IsChecked="{Binding ReadOne}">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical"
+                        Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Редактирование одного подэтапа"
+                        FontSize="24" Margin="0,0,0,10"/>
+                    <CheckBox HorizontalAlignment="Center" 
+                              VerticalAlignment="Center"
+                              x:Name="EditOne"
+                              IsChecked="{Binding EditOne}"
+                              >
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical"
+                            Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Редактирование всего проекта"
+                        FontSize="24" Margin="0,0,0,10"/>
+                    <CheckBox HorizontalAlignment="Center" 
+                              VerticalAlignment="Center"
+                              x:Name="EditFull"
+                              IsChecked="{Binding EditFull}">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+
+
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBox x:Name="TextBoxFilter"
+                     Style="{StaticResource ResourceKey=MemberFilterTheme}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Margin="20,10,0,0"
+                     Width="756"
+                     FontSize="24"
+                     Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}" Height="39"/>
+            <Button Margin="20,10,0,0"
+                    Content = "Удалить сотрудника"
+                    FontSize="28"
+                    Command="{Binding DeleteEmployeeCommand}"
+                    CommandParameter="{Binding}"
+                    Width="260" 
+                    HorizontalAlignment="Left" 
+                    Height="39"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource RoundedButtonStyle}"
+                Background="IndianRed"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="0,0,0,148" Grid.RowSpan="2">
+            <ListView
+                  x:Name="ProjectEmployeeList" 
+                  Margin="20,-5,0,10"
+                  FontSize="20"
+                  Height="342"
+                  ItemsSource="{Binding ProjectEmployeeList}"
+                  SelectedItem="{Binding SelectedMember}" 
+                  VerticalAlignment="Top" Width="1500" HorizontalAlignment="Left">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Сотрудник" 
+                                            DisplayMemberBinding="{Binding EmployeeInfo}"
+                                            Width="350"/>
+                            <GridViewColumn Header="Просмотр одного подэтапа" 
+                                            DisplayMemberBinding="{Binding ReadOne}"
+                                            Width="280"/>
+                            <GridViewColumn Header="Редактирование одного подэтапа" 
+                                            DisplayMemberBinding="{Binding EditOne}"
+                                            Width="315"/>
+                            <GridViewColumn Header="Просмотр всего проекта" 
+                                            DisplayMemberBinding="{Binding ReadFull}"
+                                            Width="240"/>
+                            <GridViewColumn Header="Редактирование всего проекта" 
+                                            DisplayMemberBinding="{Binding EditFull}"
+                                            Width="315"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+
+        <Button Grid.Row = "4"
+                Content = "Вернуться"
+                FontSize="28"
+                Width="260"
+                Height="50"
+                Command="{Binding BackCommand}" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top"
+                Style="{StaticResource RoundedButtonStyle}"
+                Background="#FFB2EAFF" Margin="816,0,817,0"/>
+
+    </Grid>
+</UserControl>

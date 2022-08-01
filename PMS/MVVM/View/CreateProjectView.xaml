@@ -1,0 +1,284 @@
+﻿<UserControl x:Class="PMS.MVVM.View.CreateProjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="951" d:DesignWidth="1893">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Создание проекта"
+                           FontSize="30" Margin="0,10"/>
+
+                <StackPanel IsEnabled="{Binding UnChecked}">
+                    <WrapPanel Orientation="Horizontal"
+                               Height="27"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                        <TextBlock Text="Название проекта:"
+                                FontSize="20" Margin="5,0,0,0" 
+                                VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Left"/>
+                        <TextBox x:Name="ProjectName" 
+                                Width="433"
+                                FontSize="20" Height="25" 
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="10,0,0,0"
+                                Text="{Binding Name}"/>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" 
+                               Height="27"
+                               HorizontalAlignment="Left" 
+                               Margin="10,0,0,10">
+                        <TextBlock Text="Дата начала проекта:"
+                                    FontSize="20" Margin="5,0,0,0" 
+                                   VerticalAlignment="Bottom" 
+                                   HorizontalAlignment="Left"/>
+
+                        <DatePicker x:Name="StartDate"
+                                    SelectedDateFormat="Short" Margin="10,0,0,0" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Bottom"
+                                    SelectedDate="{Binding StartDate}" 
+                                    FontSize="14"
+                                    DisplayDateStart="2022-05-27" Width="137" Height="25"/>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" 
+                               Height="27" HorizontalAlignment="Left" Margin="10,0,0,10">
+                        <TextBlock Text="Дата завершения проекта:"
+                                   FontSize="20" Margin="5,0,0,0" 
+                                   VerticalAlignment="Bottom" 
+                                   HorizontalAlignment="Left"/>
+
+                        <DatePicker x:Name="EndDate"
+                                    SelectedDateFormat="Short" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                    DisplayDateStart="2022-05-27"
+                                     FontSize="14"
+                                    SelectedDate="{Binding EndDate}" Width="137" Height="25"/>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" Height="31" HorizontalAlignment="Left" Margin="10,0,0,10">
+                        <TextBlock Text="Статус проекта:"
+                                   FontSize="20" Margin="5,0,0,0" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+                        <ComboBox x:Name="projectStatusComboBox" 
+                                  Margin="10,0,0,0" 
+                                  Width="236"
+                                  Height="31"
+                                  FontSize="20"
+                                  ItemsSource="{Binding ProjectStatusesListPage}"
+                                  SelectedValue="{Binding Status}"
+                                  Style="{StaticResource ComboBoxFlatStyle}"/>
+                    </WrapPanel>
+                    <Button x:Name="InitProject"
+                            Content="Далее" 
+                            HorizontalAlignment="Left" 
+                            Margin="300,0,0,0" 
+                            FontSize="20" Width="65"
+                            Command="{Binding CreateProjectAndEnableSectionsAndStagesCommand}"
+                            CommandParameter="{Binding }"
+                            Style="{StaticResource RoundedButtonStyle}"
+                            Background="#FFB2EAFF" Height="31"/>
+                </StackPanel>
+                <Grid Margin="10,10,0,0">
+                    <StackPanel  IsEnabled="{Binding OnChecked}">
+                        <StackPanel>
+                            <TextBlock Text="Настройка НИР"
+                                       FontSize="22" 
+                                       Margin="10,0,0,0"/>
+                            <StackPanel Margin="20,5,0,0">
+                                <StackPanel x:Name="SRWStagesPanel" IsEnabled="{Binding IsEnabledSRW}">
+                                    <WrapPanel Orientation="Horizontal"
+                                               Height="27"
+                                               HorizontalAlignment="Left"
+                                               Margin="0,0,0,10">
+                                        <TextBlock Text="Шифр НИР:"
+                                                    FontSize="20" Margin="0" 
+                                                    VerticalAlignment="Bottom" 
+                                                    HorizontalAlignment="Left"/>
+                                        <TextBox x:Name="SRWCipher" 
+                                                    Width="343"
+                                                    FontSize="20" Height="25" 
+                                                    HorizontalAlignment="Left" 
+                                                    VerticalAlignment="Bottom" 
+                                                    Margin="10,0,0,0"
+                                                    Text="{Binding SRWCipher}"/>
+                                    </WrapPanel>
+
+                                    <CheckBox x:Name="oneSRW"
+                                              Content="Выбор направлений исследований"
+                                              IsChecked="{Binding OneSRW}">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <CheckBox x:Name="twoSRW" 
+                                              Content="Теоретические и экспериментальные исследования" 
+                                              
+                                              IsChecked="{Binding TwoSRW}">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <CheckBox x:Name="threeSRW" 
+                                              Content="Проведение ОТР" 
+                                              IsChecked="{Binding ThreeSRW}">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <CheckBox x:Name="fourSRW" 
+                                              Content="Приемка НИР" 
+                                              IsChecked="{Binding FourSRW}">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                </StackPanel>
+                                <Separator/>
+                                <CheckBox x:Name="ResetSRW" 
+                                          Content="НИР в проекте отсутствует" 
+                                          IsChecked="{Binding ResetSRW}">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Настройка ОКР"
+                                        FontSize="22"
+                                       Margin="10,0,0,0"/>
+                            <StackPanel Margin="20,5,0,0">
+                                <StackPanel IsEnabled="{Binding IsEnabledEDW}">
+                                    <StackPanel x:Name="FirstEDWStagesPanel" Height="140">
+                                    <WrapPanel Orientation="Horizontal"
+                                               Height="25"
+                                               HorizontalAlignment="Left"
+                                               Margin="0,0,0,10">
+                                        <TextBlock  Text="Шифр ОКР:"
+                                                    FontSize="20" Margin="0" 
+                                                    VerticalAlignment="Bottom" 
+                                                    HorizontalAlignment="Left"/>
+                                        <TextBox x:Name="EDWCipher" 
+                                                    Width="343"
+                                                    FontSize="20" Height="25" 
+                                                    HorizontalAlignment="Left" 
+                                                    VerticalAlignment="Bottom" 
+                                                    Margin="10,0,0,0"
+                                                    Text="{Binding EDWCipher}"/>
+                                    </WrapPanel>
+                                    <RadioButton x:Name="onetwoEDW" 
+                                                 GroupName="FirstStages" 
+                                                 Content="Разработка ЭП и Разработка ТП объединены" 
+                                                 Margin="0,0,0,10"
+                                                 Command="{Binding GetStartEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                    <RadioButton x:Name="one_twoEDW" 
+                                                 GroupName="FirstStages"
+                                                 Content="Разработка ЭП, Разработка ТП раздельно" 
+                                                 Margin="0,0,0,10"
+                                                 Command="{Binding GetStartEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                    <RadioButton x:Name="twoEDW" 
+                                                 GroupName="FirstStages" 
+                                                 Content="Разработка ТП (Разработка ЭП исключен)" 
+                                                 Margin="0,0,0,10"
+                                                 Command="{Binding GetStartEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                    <RadioButton x:Name="onefourEDW" 
+                                                 GroupName="FirstStages" 
+                                                 Content="Этапы, начиная с Разработки ЭП, заканчивая Изготовлением ОО изделия ВТ и проведение ПИ объединены" 
+                                                 Margin="0,0,0,10"
+                                                 Command="{Binding GetStartEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                </StackPanel>
+                                <Separator/>
+                                    <StackPanel x:Name="MiddleEDWStagesPanel" Margin="0,0,0,10" IsEnabled="{Binding IsEnabledMidEDW}">
+                                    <RadioButton x:Name="three_fourEDW" 
+                                                 GroupName="MiddleStages" 
+                                                 Content="Разработка РКД для изготовления ОО изделия ВТ, Изготовление ОО изделия ВТ и проведение ПИ раздельно" 
+                                                 Margin="0,0,0,10"
+                                                 Command="{Binding GetMiddleEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                    <RadioButton x:Name="threefourEDW" 
+                                                 GroupName="MiddleStages" 
+                                                 Content="Разработка РКД для изготовления ОО изделия ВТ, Изготовление ОО изделия ВТ и проведение ПИ объединены" 
+                                                 Margin="0,0,0,5"
+                                                 Command="{Binding GetMiddleEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                </StackPanel>
+                                <Separator/>
+                                <StackPanel x:Name="LastEDWStagesPanel" Height="50">
+                                    <RadioButton x:Name="five_sixEDW" 
+                                                 GroupName="LastStages" 
+                                                 Content="Проведение ГИ ОО изделия ВТ, Утверждение РКД для организации промышленного (серийного) производства изделий ВТ раздельно" 
+                                                 Margin="0,0,0,10"
+                                                 Command="{Binding GetEndEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                    <RadioButton x:Name="fivesixEDW" 
+                                                 GroupName="LastStages" 
+                                                 Content="Проведение ГИ ОО изделия ВТ, Утверждение РКД для организации промышленного (серийного) производства изделий ВТ объединены" 
+                                                 Command="{Binding GetEndEDWStagesCommand}" 
+                                                 CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}">
+                                        <RadioButton.RenderTransform>
+                                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                        </RadioButton.RenderTransform>
+                                    </RadioButton>
+                                </StackPanel>
+                            </StackPanel>
+                                <Separator/>
+                                <CheckBox x:Name="ResetEDW" 
+                                          Content="ОКР в проекте отсутствует"
+                                          IsChecked="{Binding ResetEDW}">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <Button x:Name="ConfigureProject"
+                                Content="Сконфигурировать проект"
+                                FontSize="20"
+                                Command="{Binding CreateSectionsAndStagesCommand}"
+                                CommandParameter="{Binding }"
+                                 Style="{StaticResource RoundedButtonStyle}"
+                            Background="#FFB2EAFF" Height="35" Margin="790,0,833,0"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

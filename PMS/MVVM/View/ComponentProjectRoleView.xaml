@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="PMS.MVVM.View.ComponentProjectRoleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="951" d:DesignWidth="793">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="74"/>
+            <RowDefinition Height="79"/>
+            <RowDefinition Height="600"/>
+            <RowDefinition Height="239"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Назначение Ролей"
+                   FontSize="34" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Bottom"
+                   Grid.Row="0" 
+                   Height="40" Width="293"/>
+
+        <StackPanel Orientation="Horizontal"
+                            Grid.Row="1"
+                            Height="53" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Width="793" Margin="0,27,0,0" Grid.RowSpan="2">
+            <ComboBox x:Name="MemberListCB"
+                                  Width="312"
+                                  FontSize="20"
+                                  Height="42"
+                                  Margin="10,0,0,0"
+                                  ItemsSource="{Binding MemberList}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding SelectedMember}" 
+                      HorizontalAlignment="Left" 
+                      VerticalAlignment="Top"
+                      Style="{StaticResource ComboBoxFlatStyle}"/>
+            <ComboBox x:Name="RoleListCB"
+                                  Width="292"
+                                  FontSize="20"
+                                  Height="42"
+                                  Margin="10,0,0,0"
+                                  ItemsSource="{Binding RoleList}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding SelectedRole}" 
+                      HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Style="{StaticResource ComboBoxFlatStyle}"/>
+
+            <Button x:Name="AddTmpProjectRole"
+                                    Content="Добавить"
+                                    FontSize="30" 
+                                    Width="119"
+                                    Height="43"
+                                    Command="{Binding AddTmpComponentProjectRoleCommand}"
+                                    CommandParameter="{Binding }" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Top"
+                                    Margin="10,0,0,0"
+                    Style="{StaticResource RoundedButtonStyle}"
+                    Background="#FFB2EAFF" />
+        </StackPanel>
+
+        <ListView x:Name="RoleList"
+                  Margin="10,0,0,0" 
+                  FontSize="20"
+                  Grid.Row="2"
+                  ItemsSource="{Binding TmpComponentProjectRoles}"
+                  SelectedItem="{Binding SelectedTmpComponentProjectRole}" 
+                  Width="773" 
+                  HorizontalAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Участник" 
+                                        DisplayMemberBinding="{Binding MemberName}"
+                                        Width="400"/>
+                        <GridViewColumn Header="Роль" 
+                                        DisplayMemberBinding="{Binding RoleName}"
+                                        Width="350"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Grid.Row="2"
+                    x:Name="DeleteComponent"
+                    Content="Удалить"
+                    FontSize="30" 
+                    Width="136"
+                    Command="{Binding DeleteTmpComponentProjectRoleCommand}"
+                    CommandParameter="{Binding }" 
+                    HorizontalAlignment="Left" 
+                    Margin="20,0,0,165" 
+                    Height="60" 
+                    VerticalAlignment="Bottom"
+                 Style="{StaticResource RoundedButtonStyle}"
+                    Background="IndianRed" Grid.RowSpan="2" />
+        <Button     Grid.Row="3"
+                    x:Name="SaveComponentProjectRolesCommand"
+                    Content="Сохранить изменения"
+                    FontSize="30" 
+                    Width="317"
+                    Command="{Binding SaveComponentProjectRoleCommand}"
+                    CommandParameter="{Binding }" 
+                    HorizontalAlignment="Right" 
+                    Height="60" 
+                    VerticalAlignment="Bottom" Margin="0,0,51,165"
+                     Style="{StaticResource RoundedButtonStyle}"
+                    Background="#FFB2EAFF" />
+
+
+    </Grid>
+</UserControl>

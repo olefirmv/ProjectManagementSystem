@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS", "PMS\PMS.csproj", "{724BA50B-5AAC-46F5-B1BC-56DE8BFDB48C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.BL", "PMS.BL\PMS.BL.csproj", "{F67E926B-7C31-4601-87F9-282C44807347}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.BL.Test", "PMS.BL.Test\PMS.BL.Test.csproj", "{D62DCE5E-2008-424A-818E-091A8D103173}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{724BA50B-5AAC-46F5-B1BC-56DE8BFDB48C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724BA50B-5AAC-46F5-B1BC-56DE8BFDB48C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724BA50B-5AAC-46F5-B1BC-56DE8BFDB48C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724BA50B-5AAC-46F5-B1BC-56DE8BFDB48C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F67E926B-7C31-4601-87F9-282C44807347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F67E926B-7C31-4601-87F9-282C44807347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F67E926B-7C31-4601-87F9-282C44807347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F67E926B-7C31-4601-87F9-282C44807347}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62DCE5E-2008-424A-818E-091A8D103173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62DCE5E-2008-424A-818E-091A8D103173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62DCE5E-2008-424A-818E-091A8D103173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62DCE5E-2008-424A-818E-091A8D103173}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB997754-B31D-4ECF-B5D5-0C1BC30FC074}
+	EndGlobalSection
+EndGlobal

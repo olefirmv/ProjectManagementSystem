@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{724BA50B-5AAC-46F5-B1BC-56DE8BFDB48C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PMS</RootNamespace>
+    <AssemblyName>PMS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Controls\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\BindablePasswordBox.xaml.cs">
+      <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\AddComponentCommand.cs" />
+    <Compile Include="Core\AddTmpComponentProjectRoleCommand.cs" />
+    <Compile Include="Core\AddDocumentCommand.cs" />
+    <Compile Include="Core\AddEmployeeCommand.cs" />
+    <Compile Include="Core\AddEmptyStageLine.cs" />
+    <Compile Include="Core\AddFormCommand.cs" />
+    <Compile Include="Core\AddMemberCommand.cs" />
+    <Compile Include="Core\AddTmpProjectRoleCommand.cs" />
+    <Compile Include="Core\AddTmpRoleCommand.cs" />
+    <Compile Include="Core\CancelDocumentCommand.cs" />
+    <Compile Include="Core\CancelTmpRoleCommand.cs" />
+    <Compile Include="Core\ChangeEmployeePasswordCommand.cs" />
+    <Compile Include="Core\CreateProjectAndEnableSectionAndStageCommand.cs" />
+    <Compile Include="Core\CreateSectionsAndStagesCommand.cs" />
+    <Compile Include="Core\DelegateCommand.cs" />
+    <Compile Include="Core\DeleteComponentCommand.cs" />
+    <Compile Include="Core\DeleteProjectCommand.cs" />
+    <Compile Include="Core\DeleteTmpComponentProjectRoleCommand.cs" />
+    <Compile Include="Core\DeleteDocumentCommand.cs" />
+    <Compile Include="Core\DeleteTmpProjectRoleCommand.cs" />
+    <Compile Include="Core\DeleteTmpRoleCommand.cs" />
+    <Compile Include="Core\DeleteEmployeeCommand.cs" />
+    <Compile Include="Core\EditAgreesCommand.cs" />
+    <Compile Include="Core\EditClaimsCommand.cs" />
+    <Compile Include="Core\EditDevelopsCommand.cs" />
+    <Compile Include="Core\EditDocumentCommand.cs" />
+    <Compile Include="Core\DeleteMemberCommand.cs" />
+    <Compile Include="Core\EditTmpProjectRoleCommand.cs" />
+    <Compile Include="Core\LoginCommand.cs" />
+    <Compile Include="Core\ObservableObject.cs" />
+    <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Core\AddRoleCommand.cs" />
+    <Compile Include="Core\SaveComponentProjectRoleCommand.cs" />
+    <Compile Include="Core\SaveEmployeeInfoCommand.cs" />
+    <Compile Include="Core\SaveProjectInfoCommand.cs" />
+    <Compile Include="Core\SaveStageLineCommand.cs" />
+    <Compile Include="Core\SetStageLinesCommand.cs" />
+    <Compile Include="Core\UpdateDocumentCommand.cs" />
+    <Compile Include="Core\UpdateTmpRoleCommand.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MVVM\View\AllProjectsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ComponentInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ComponentProjectRoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\CreateProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\DocumentDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\DocumentListPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\EmployeeInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\EmployeeListPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\FormListPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\EDWStagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\MemberListPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ProjectDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ProjectInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\RoleListPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SRWStagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\StageLineInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\StageLinesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\TmpRoleSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\AddBtnStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\CircleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\HomeButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\LoginTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ProjectScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ProjectTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\RoundedButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\TextBoxDocumentNameTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\TextBoxFilterTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\TextBoxFormNameTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\TextBoxMemberFilterTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MVVM\ViewModel\AllProjectsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ComponentInfoViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ComponentProjectRoleViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\CreateProjectViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\DocumentDetailsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\DocumentListPageViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\EmployeeInfoViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\EmployeeListPageViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\FormListPageViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\EDWStagesViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\IStageViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\MemberListPageViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ProjectDetailsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ProjectInfoViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\RoleListPageViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SRWStagesViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\StageLineInfoViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\StageLinesViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\TmpRoleSelectionViewModel.cs" />
+    <Compile Include="MVVM\View\AllProjectsView.xaml.cs">
+      <DependentUpon>AllProjectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ComponentInfoView.xaml.cs">
+      <DependentUpon>ComponentInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ComponentProjectRoleView.xaml.cs">
+      <DependentUpon>ComponentProjectRoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\CreateProjectView.xaml.cs">
+      <DependentUpon>CreateProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\DocumentDetailsView.xaml.cs">
+      <DependentUpon>DocumentDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\DocumentListPageView.xaml.cs">
+      <DependentUpon>DocumentListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\EmployeeInfoView.xaml.cs">
+      <DependentUpon>EmployeeInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\EmployeeListPageView.xaml.cs">
+      <DependentUpon>EmployeeListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\FormListPageView.xaml.cs">
+      <DependentUpon>FormListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\EDWStagesView.xaml.cs">
+      <DependentUpon>EDWStagesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\MemberListPageView.xaml.cs">
+      <DependentUpon>MemberListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ProjectDetailsView.xaml.cs">
+      <DependentUpon>ProjectDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ProjectInfoView.xaml.cs">
+      <DependentUpon>ProjectInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\RoleListPageView.xaml.cs">
+      <DependentUpon>RoleListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SRWStagesView.xaml.cs">
+      <DependentUpon>SRWStagesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\StageLineInfoView.xaml.cs">
+      <DependentUpon>StageLineInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\StageLinesView.xaml.cs">
+      <DependentUpon>StageLinesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\TmpRoleSelectionView.xaml.cs">
+      <DependentUpon>TmpRoleSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include=".editorconfig" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMS.BL.Test\PMS.BL.Test.csproj">
+      <Project>{D62DCE5E-2008-424A-818E-091A8D103173}</Project>
+      <Name>PMS.BL.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.BL\PMS.BL.csproj">
+      <Project>{f67e926b-7c31-4601-87f9-282c44807347}</Project>
+      <Name>PMS.BL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pngwing.com.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AddDocu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\home.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F67E926B-7C31-4601-87F9-282C44807347}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PMS.BL</RootNamespace>
+    <AssemblyName>PMS.BL</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\ComponentDB.cs" />
+    <Compile Include="Core\CredentialDB.cs" />
+    <Compile Include="Core\DataBase.cs" />
+    <Compile Include="Core\DocumentDB.cs" />
+    <Compile Include="Core\EmployeeDB.cs" />
+    <Compile Include="Core\FormDB.cs" />
+    <Compile Include="Core\MemberDB.cs" />
+    <Compile Include="Core\PrivelegeDB.cs" />
+    <Compile Include="Core\ProjectDB.cs" />
+    <Compile Include="Core\ProjectEmployeeDB.cs" />
+    <Compile Include="Core\ProjectRoleDB.cs" />
+    <Compile Include="Core\RoleDB.cs" />
+    <Compile Include="Core\SectionDB.cs" />
+    <Compile Include="Core\StageDB.cs" />
+    <Compile Include="Core\StageLineDB.cs" />
+    <Compile Include="Extensions\EnumExtension.cs" />
+    <Compile Include="Model\Component.cs" />
+    <Compile Include="Model\Credential.cs" />
+    <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Form.cs" />
+    <Compile Include="Model\Member.cs" />
+    <Compile Include="Core\PMSBLHelper.cs" />
+    <Compile Include="Model\ObjectClass.cs" />
+    <Compile Include="Model\Privelege.cs" />
+    <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectEmployee.cs" />
+    <Compile Include="Model\ProjectRole.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\Section.cs" />
+    <Compile Include="Model\Stage.cs" />
+    <Compile Include="Model\StageLine.cs" />
+    <Compile Include="Model\TmpEmployeePrivelege.cs" />
+    <Compile Include="Model\TmpProjectRole.cs" />
+    <Compile Include="Model\TmpStageLine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

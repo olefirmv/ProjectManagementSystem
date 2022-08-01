@@ -1,0 +1,78 @@
+﻿<Window x:Class="PMS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:PMS.MVVM.ViewModel"
+        xmlns:local="clr-namespace:PMS"
+        mc:Ignorable="d"
+        Title="Управление НИОКР"
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="CanMinimize" 
+        Height="1040"
+        Width="1920">
+
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <StackPanel Width="1903" Height="1011">
+
+        <Grid x:Name="TopPanel" Height="60" Background="#FFB2EAFF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="1612"></ColumnDefinition>
+                <ColumnDefinition Width="211"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="HomeButton"
+                        Grid.Column="0"
+                        IsEnabled="{Binding OnChecked}"
+                        Command="{Binding HomeCommand}"
+                        Style="{StaticResource HomeButtonTheme}"
+                        BorderThickness="0"
+                        Background="Transparent" Margin="20,0,0,0">
+                <Image Source="/Images/home.png" Stretch="Uniform"/>
+            </Button>
+
+            <Menu  Grid.Column="2"
+                       Height="Auto"
+                       Style="{StaticResource LoginMenuTheme}" HorizontalContentAlignment="Center" FlowDirection="RightToLeft" Width="211">
+                <MenuItem x:Name="LoginMenuItemHeader"
+                              Header="{Binding Employee.Name}"
+                              Style="{StaticResource ResourceKey=LoginMenuItemTheme}"
+                              IsEnabled="{Binding OnChecked}" 
+                              Height="60" Width="211"
+                          FontSize="28"
+                              Background="Transparent" FlowDirection="RightToLeft">
+                    <Button x:Name="EmployeeInfoButton" 
+                            FontSize="20" 
+                            Content="Информация о пользователе" 
+                            Style="{StaticResource ResourceKey=LoginButtonTheme}"
+                            Command="{Binding ShowEmployeeInfoCommand}"
+                            />
+                    
+                    <Separator Margin="0,10,0,0"/>
+                    <Button x:Name="LogoutButton"
+                                Content="Выйти"
+                                FontSize="20"
+                                Style="{StaticResource ResourceKey=LoginButtonTheme}"
+                                Command="{Binding LogoutCommand}"/>
+                </MenuItem>
+            </Menu>
+
+
+
+        </Grid>
+
+
+
+        <Grid Height='951' Width="1903">
+
+            <ContentControl Grid.Column="0"
+                            Margin="0"
+                            Content="{Binding CurrentView}" Width="1903" Height="951"/>
+
+        </Grid>
+    </StackPanel>
+</Window>

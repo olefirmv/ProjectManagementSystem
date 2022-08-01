@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="PMS.MVVM.View.ProjectDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="951" d:DesignWidth="1893">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="911"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <WrapPanel Orientation="Horizontal" Margin="0,0,0,5" Height="28">
+                <Button x:Name="ChangeSectionButton"
+                        Content="Сменить НИР/ОКР" 
+                        Margin="5,0,30,0"
+                        Command="{Binding ChangeSectionCommand}"
+                        IsEnabled="{Binding IsChangeable}"
+                        FontSize="20"
+                        Style="{StaticResource RoundedButtonStyle}"
+                    Background="#FFB2EAFF" Width="162" />
+                <Button x:Name="EmployeeManagerButton"
+                        Content="Менеджер сотрудников"
+                        Margin="10,0,30,0"
+                        Command="{Binding EmployeeManagerCommand}"
+                        FontSize="20"
+                        IsEnabled="{Binding IsPermissible}"
+                        Style="{StaticResource RoundedButtonStyle}"
+                    Background="#FFB2EAFF" Width="206" />
+                <Button x:Name="MemberManagerButton"
+                        Content="Менеджер участников"
+                        Margin="10,0,30,0"
+                        Command="{Binding MemberManagerCommand}"
+                        FontSize="20"
+                        IsEnabled="{Binding IsPermissible}"
+                        Style="{StaticResource RoundedButtonStyle}"
+                    Background="#FFB2EAFF" Width="199" />
+                <Button x:Name="ComponentManagerButton"
+                        Content="Менеджер СЧ"
+                        Margin="10,0,30,0"
+                        Command="{Binding ComponentManagerCommand}"
+                        FontSize="20"
+                        IsEnabled="{Binding IsPermissible}"
+                        Style="{StaticResource RoundedButtonStyle}"
+                    Background="#FFB2EAFF" Width="127" />
+                <Button x:Name="ProjectInfoButton"
+                        Content="Менеджер проекта"
+                        Margin="10,0,30,0"
+                        Command="{Binding ProjectInfoCommand}"
+                        FontSize="20"
+                        IsEnabled="{Binding IsPermissible}"
+                        Style="{StaticResource RoundedButtonStyle}"
+                    Background="#FFB2EAFF" Width="177" />
+            </WrapPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ContentControl Grid.Column="0"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

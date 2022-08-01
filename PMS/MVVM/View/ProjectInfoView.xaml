@@ -1,0 +1,213 @@
+﻿<UserControl x:Class="PMS.MVVM.View.ProjectInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             xmlns:controls="clr-namespace:PMS.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="951" d:DesignWidth="1893">
+    <Grid>
+        <TextBlock Text="Менеджер проекта"
+                   FontSize="45" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top"
+                   Grid.Row="0" 
+                   Height="65" Width="405" Margin="800,0,688,0"/>
+
+        <StackPanel Margin="0,100,0,0">
+            <WrapPanel Orientation="Horizontal"
+                               Height="32"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                <TextBlock Text="Название проекта:"
+                                FontSize="24" Margin="5,0,0,0" 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"/>
+                <TextBox x:Name="ProjectName" 
+                                Width="343"
+                                FontSize="24" Height="32" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Margin="10,0,0,0"
+                                Text="{Binding Name}"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal" 
+                               Height="40" 
+                               HorizontalAlignment="Left" 
+                               Margin="10,0,0,10">
+                <TextBlock Text="Дата начала проекта:"
+                                   FontSize="24" Margin="5,0,0,0" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" Height="32"/>
+
+                <DatePicker x:Name="StartDate"
+                                    SelectedDateFormat="Short" Margin="10,0,0,0" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center"
+                            FontSize="20"
+                                    SelectedDate="{Binding StartDate}" 
+                                    DisplayDateStart="2022-05-27" Width="226"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal" Height="32" 
+                       HorizontalAlignment="Left" 
+                       Margin="10,0,0,10">
+                <TextBlock Text="Дата окончания проекта:"
+                                   FontSize="24" Margin="5,0,0,0" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+
+                <DatePicker x:Name="EndDate"
+                            SelectedDateFormat="Short" 
+                            Margin="10,0,0,0" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            SelectedDate="{Binding EndDate}" 
+                            Width="205"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal" Height="32" HorizontalAlignment="Left" Margin="10,0,0,10">
+                <TextBlock Text="Статус проекта:"
+                           FontSize="24" 
+                           Margin="5,0,0,0" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"/>
+                <ComboBox x:Name="projectStatusComboBox" 
+                                Width="312"
+                                FontSize="20" 
+                                Height="30"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Margin="10,0,0,0"
+                                ItemsSource="{Binding ProjectStatusesListPage}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="Value"
+                                SelectedValue="{Binding Status}"
+                          Style="{StaticResource ComboBoxFlatStyle}"/>
+            </WrapPanel>
+
+            <Grid Height="609">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "53"/>
+                    <RowDefinition Height = "456"/>
+                    <RowDefinition Height = "100"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="0"
+                            Height="53" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Width="1422">
+                    <ComboBox x:Name="MemberListCB"
+                                  Width="312"
+                                  FontSize="20"
+                                  Height="50"
+                                  Margin="10,0,0,0"
+                                  ItemsSource="{Binding MemberList}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding SelectedMember}" 
+                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Style="{StaticResource ComboBoxFlatStyle}"/>
+                    <ComboBox x:Name="RoleListCB"
+                                  Width="312"
+                                  FontSize="20"
+                                  Height="50"
+                                  Margin="10,0,0,0"
+                                  ItemsSource="{Binding RoleList}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding SelectedRole}" 
+                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Style="{StaticResource ComboBoxFlatStyle}"/>
+                    <ComboBox x:Name="SectionCB"
+                                  Width="312"
+                                  FontSize="20"
+                                  Height="50"
+                                  Margin="10,0,0,0"
+                                  ItemsSource="{Binding SectionList}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding SelectedSection}" 
+                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Style="{StaticResource ComboBoxFlatStyle}"/>
+                    <Button x:Name="AddTmpProjectRole"
+                                    Content="Добавить"
+                                    FontSize="30" 
+                                    Width="144"
+                                    Height="50"
+                                    Command="{Binding AddTmpProjectRoleCommand}"
+                                    CommandParameter="{Binding }" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Top"
+                                    Margin="20,0,0,0"
+                             Style="{StaticResource RoundedButtonStyle}"
+                            Background="#FFB2EAFF"/>
+                    <Button 
+                        x:Name="DeleteTmpProjectRole"
+                        Content="Удалить"
+                        FontSize="30" 
+                        Width="109"
+                        Command="{Binding DeleteTmpProjectRoleCommand}"
+                        CommandParameter="{Binding }" 
+                        HorizontalAlignment="Left" 
+                        Margin="40,0,0,0" Height="50" VerticalAlignment="Top"
+                         Style="{StaticResource RoundedButtonStyle}"
+                            Background="IndianRed" HorizontalContentAlignment="Center"/>
+                </StackPanel>
+
+                <ListView x:Name="RoleList"
+                            Margin="10,20,0,0" 
+                            FontSize="20"
+                            Grid.Row="1"
+                            ItemsSource="{Binding TmpProjectRoles}"
+                            SelectedItem="{Binding SelectedTmpProjectRole}" Width="1412" HorizontalAlignment="Left">
+
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Участник" 
+                                        DisplayMemberBinding="{Binding MemberName}"
+                                        Width="500"/>
+                                <GridViewColumn Header="Роль" 
+                                        DisplayMemberBinding="{Binding RoleName}"
+                                        Width="400"/>
+                                <GridViewColumn Header="Секция" 
+                                        DisplayMemberBinding="{Binding SectionName}"
+                                        Width="200"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <!--<Button Grid.Row="2" 
+                        x:Name="EditTmpProjectRole"
+                        Content="Редактировать"
+                        FontSize="30" 
+                        Width="220"
+                        Command="{Binding EditTmpProjectRoleCommand}"
+                        CommandParameter="{Binding }" 
+                        HorizontalAlignment="Left" 
+                        Margin="200,20,0,0" Height="60" VerticalAlignment="Top"/>-->
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <Button x:Name="SaveProjectInfoButton"
+                                Content="Сохранить изменения"
+                                FontSize="30"
+                                Command="{Binding SaveProjectInfoCommand}"
+                                CommandParameter="{Binding }" 
+                                Height="50" 
+                            Style="{StaticResource RoundedButtonStyle}"
+                            Background="#FFB2EAFF" Margin="200,0,0,0"/>
+                    <Button x:Name="BackButton"
+                            Content="Вернуться"
+                            FontSize="30"
+                            Command="{Binding BackCommand}"
+                            CommandParameter="{Binding }" 
+                            Height="50" Width="182"
+                        Style="{StaticResource RoundedButtonStyle}"
+                                    Background="#FFB2EAFF" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="425,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

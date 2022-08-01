@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="PMS.MVVM.View.ComponentInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="951" d:DesignWidth="1893">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="1100"/>
+            <ColumnDefinition Width="793"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column ="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="196"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="436" />
+                <RowDefinition Height="317" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            FontSize="45"
+            Text="Менеджер составной части" 
+            VerticalAlignment="Center" Height="60" Width="582" Margin="259,20" />
+
+            <StackPanel Grid.Row ="1" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,0,10"
+                        Grid.Row="1" 
+                        VerticalAlignment="Top">
+                    <TextBlock Text="Название Составной части:"
+                                FontSize="30" 
+                                Margin="0,0,0,0"/>
+                    <TextBox x:Name="ComponentName"
+                                FontSize="30"
+                                Margin="10,0,0,0"
+                                Text="{Binding NewName}" Width="610"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,0,10"
+                        Grid.Row="1" 
+                        VerticalAlignment="Top">
+                    <TextBlock Text="Шифр Составной части:"
+                                FontSize="30" 
+                                Margin="0,0,0,0"/>
+                    <TextBox x:Name="ComponentCipher"
+                                FontSize="30" 
+                                Margin="10,0,0,0"
+                                Text="{Binding NewCipher}" Width="657"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                    <TextBlock Text="Секция:"
+                                FontSize="30"  
+                               Margin="0, 0,0,0"
+                                VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="SectionList" 
+                                Width="245"
+                                FontSize="20"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="10,0,0,0"
+                                ItemsSource="{Binding SectionList}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="Value"
+                                SelectedValue="{Binding SelectedSection}"
+                              Style="{StaticResource ComboBoxFlatStyle}"/>
+                </StackPanel>
+                <Button x:Name="AddComponent"
+                        Content="Сохранить"
+                        FontSize="30" 
+                        Command="{Binding AddComponentCommand}"
+                        CommandParameter="{Binding }" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Center"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        Background="#FFB2EAFF" Width="164" Margin="20,0,0,0"/>
+            </StackPanel>
+            <ListView x:Name="RoleList"
+                      Margin="10,20,0,0" 
+                      FontSize="20"
+                      Grid.Row="3"
+                      ItemsSource="{Binding ComponentList}"
+                      SelectedItem="{Binding SelectedComponent}"
+                      Width="1000"
+                      Height="377"
+                      HorizontalAlignment="Left" 
+                      VerticalAlignment="Top" HorizontalContentAlignment="Center">
+
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Название" 
+                                        DisplayMemberBinding="{Binding Name}"
+                                        Width="400"/>
+                            <GridViewColumn Header="Шифр" 
+                                        DisplayMemberBinding="{Binding Cipher}"
+                                        Width="300"/>
+                            <GridViewColumn Header="Секция" 
+                                        DisplayMemberBinding="{Binding SectionName}"
+                                        Width="200"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <TextBox x:Name="TextBoxFilter"
+                     Style="{StaticResource ResourceKey=ComponentFilterTheme}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Margin="10,0,0,0"
+                     Width="350"
+                     FontSize="30"
+                     Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Grid.Row="2"
+                    x:Name="DeleteComponent"
+                    Content="Удалить"
+                    FontSize="30" 
+                    Width="150"
+                    Command="{Binding DeleteComponentCommand}"
+                    CommandParameter="{Binding }" 
+                    HorizontalAlignment="Center" 
+                    Height="40" 
+                    VerticalAlignment="Center"
+                        Style="{StaticResource RoundedButtonStyle}"
+                    Background="IndianRed" Margin="10,0,0,0" />
+            </StackPanel>
+        </Grid>
+        <Button
+                    x:Name="BackCommand"
+                    Content="Вернуться"
+                    FontSize="30" 
+                    Width="173"
+                    Command="{Binding BackCommand}"
+                    CommandParameter="{Binding }" 
+                    HorizontalAlignment="Center" 
+                    Height="60" 
+                    VerticalAlignment="Bottom" Margin="463,0,464,80"
+                    Style="{StaticResource RoundedButtonStyle}"
+                 Background="#FFB2EAFF"/>
+
+        <ContentControl Grid.Column="1"
+                        Margin="0"
+                        Content="{Binding HelperView}"/>
+    </Grid>
+</UserControl>

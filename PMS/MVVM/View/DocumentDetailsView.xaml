@@ -1,0 +1,249 @@
+﻿<UserControl x:Class="PMS.MVVM.View.DocumentDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="951" d:DesignWidth="1893">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="1050"/>
+            <ColumnDefinition Width="843"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBlock HorizontalAlignment="Center"
+                           Text="Редактор документа"
+                           FontSize="30" Margin="0,20,0,20"/>
+
+            <WrapPanel Orientation="Horizontal"
+                               Height="40"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                <TextBlock Text="Название документа:"
+                                FontSize="20" Margin="20, 0,0,0"
+                                Height="30"
+                                VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Left"/>
+                <TextBox x:Name="DocumentName" 
+                                Width="469"
+                                FontSize="20"
+                                Height="30"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="10,0,0,0"
+                                Text="{Binding Name}"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                               Height="40"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                <TextBlock Text="Название формы:"
+                                FontSize="20" Margin="20, 0,0,0" 
+                                Height="30"
+                                VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Left"/>
+                <ComboBox x:Name="FormID" 
+                                Width="500"
+                                FontSize="20" 
+                                Height="30"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="10,0,0,0"
+                                ItemsSource="{Binding FormList}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="Value"
+                                SelectedValue="{Binding FormID}"
+                          Style="{StaticResource ComboBoxFlatStyle}"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                               Height="40"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                <TextBlock Text="Название секции:"
+                                FontSize="20" Margin="20, 0,0,0"
+                                Height="30"
+                                VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Left"/>
+                <ComboBox x:Name="SectionNum" 
+                                Width="500"
+                                FontSize="20"
+                                Height="30"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="10,0,0,0"
+                                ItemsSource="{Binding SectionList}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="Value"
+                                SelectedValue="{Binding SectionNum}"
+                          Style="{StaticResource ComboBoxFlatStyle}"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                               Height="40"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                <TextBlock Text="Название этапа:"
+                                FontSize="20" Margin="20, 0,0,0"
+                                Height="30"
+                                VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Left"/>
+                <ComboBox x:Name="StageNum" 
+                                Width="516"
+                                FontSize="20" 
+                                Height="30"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="10,0,0,0"
+                                ItemsSource="{Binding StageList}"
+                                DisplayMemberPath="Name"
+                                SelectedValuePath="Value"
+                                SelectedValue="{Binding StageNum}"
+                          Style="{StaticResource ComboBoxFlatStyle}"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                               Height="91"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10" Width="692">
+                <TextBlock Text="Разрабатывает документ:"
+                                FontSize="20" Margin="20,0,0,0"
+                                Height="30"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"/>
+                <Label x:Name="Develops" 
+                                FontSize="20" 
+                                Height="91"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="20,0,0,0"
+                       Content="{Binding Develops}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="DevelopsEditButton" 
+                                FontSize="20"
+                                Height="30"
+                                Width="30"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"
+                                Margin="20,0,0,0" 
+                                Background="Black"
+                                Command="{Binding EditDevelopsCommand}"
+                                CommandParameter="{Binding }" 
+                        HorizontalContentAlignment="Center">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="/Images/AddDocu.png" Stretch="Uniform"/>
+                    </Button.OpacityMask>
+                </Button>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                               Height="89"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10" Width="692">
+                <TextBlock Text="Согласовывает документ:"
+                                FontSize="20" Margin="20,0,0,0"
+                                Height="30"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"/>
+                <Label x:Name="Agrees" 
+                                FontSize="20" 
+                                Height="89"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="20,0,0,0"
+                       Content="{Binding Agrees}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="AgreesEditButton" 
+                                FontSize="20"
+                                Height="30"
+                                Width="30"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" 
+                                Background="Black"
+                                Command="{Binding EditAgreesCommand}"
+                                CommandParameter="{Binding }">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="/Images/AddDocu.png" Stretch="Uniform"/>
+                    </Button.OpacityMask>
+                </Button>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                               Height="79"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10" Width="693">
+                <TextBlock Text="Утверждает документ:"
+                                FontSize="20" Margin="20,0,0,0"
+                                Height="30"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"/>
+                <Label x:Name="Claims" 
+                                FontSize="20" 
+                                Height="79"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="20,0,0,0"
+                       Content="{Binding Claims}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button x:Name="ClaimsEditButton" 
+                                FontSize="20"
+                                Height="30"
+                                Width="30"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" 
+                                Background="Black"
+                                Command="{Binding EditClaimsCommand}"
+                                CommandParameter="{Binding }">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="/Images/AddDocu.png" Stretch="Uniform"/>
+                    </Button.OpacityMask>
+                </Button>
+
+            </WrapPanel>
+
+            <WrapPanel Orientation="Horizontal"
+                               Height="200"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,10">
+                <TextBlock Text="Примечание:"
+                                FontSize="20" Margin="20, 0,0,0"
+                                Height="30"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"/>
+                <TextBox x:Name="DocumentComment" 
+                                Width="532"
+                                FontSize="20"
+                                Height="190"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Bottom" 
+                                Margin="10,0,0,0"
+                                Text="{Binding Comment}"
+                                TextWrapping="Wrap"
+                                AcceptsReturn="True"/>
+            </WrapPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="UpdateDocument"
+                                Content="Обновить" 
+                                Margin="150,50,0,0" 
+                                FontSize="28" 
+                                Command="{Binding UpdateDocumentCommand}"
+                                CommandParameter="{Binding }"
+                        Style="{StaticResource RoundedButtonStyle}"
+                Background="#FFB2EAFF" Width="132"/>
+
+                <Button x:Name="Cancel"
+                                Content="Отменить изменения" 
+                                Margin="120,50,0,0" 
+                                FontSize="28" 
+                                Command="{Binding CancelDocumentCommand}"
+                                CommandParameter="{Binding }"
+                        Style="{StaticResource RoundedButtonStyle}"
+                Background="#FFF90000" Width="258" Height="40"/>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+        <ContentControl Grid.Column="1"
+                        Margin="2,0,1,0"
+                        Content="{Binding HelperView}"/>
+    </Grid>
+</UserControl>

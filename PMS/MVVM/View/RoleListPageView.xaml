@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="PMS.MVVM.View.RoleListPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PMS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="951" d:DesignWidth="1893">
+    <Grid Margin="20,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95" />
+            <RowDefinition Height="82" />
+            <RowDefinition Height="103" />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+        <TextBlock
+            Margin="20,0,0,0"
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            FontSize="45"
+            Text="Менеджер ролей" 
+            VerticalAlignment="Center" Height="60" Width="360" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox x:Name="TextBoxAddRoleName"
+                     Style="{StaticResource ResourceKey=FilterTheme}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Margin="20,20,0,0"
+                     Width="400"
+                     FontSize="30"
+                     Text="{Binding Path=NewRole, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button
+                Content="Добавить Роль" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Width="250" 
+                Margin="20,29,0,9"
+                FontSize="30"
+                Command="{Binding AddRoleCommand}"
+                CommandParameter="{Binding }"
+                Style="{StaticResource RoundedButtonStyle}"
+                Background="#FFB2EAFF" Height="42"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBox x:Name="TextBoxFilter"
+                     Style="{StaticResource ResourceKey=FilterTheme2}"
+                     VerticalAlignment="Center"
+                     Margin="20,20,0,0"
+                     Width="400"
+                     FontSize="30"
+                     Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+        <ListView Grid.Row="3" 
+                  x:Name="RoleList" 
+                  Margin="20,0,0,0" 
+                  FontSize="30"
+                  ItemsSource="{Binding RoleList}" 
+                  Width="1106" 
+                  HorizontalAlignment="Left" 
+                  Height="552" 
+                  VerticalAlignment="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Номер" 
+                                        DisplayMemberBinding="{Binding RoleID}"
+                                        Width="150"/>
+                        <GridViewColumn Header="Название" 
+                                        DisplayMemberBinding="{Binding Name}"
+                                        Width="800"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row="3"
+                Content="Вернуться" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Width="150" 
+                Margin="20,0,0,50"
+                FontSize="30"
+                Command="{Binding BackCommand}"
+                CommandParameter="{Binding }"
+                Style="{StaticResource RoundedButtonStyle}"
+                Background="#FFB2EAFF" Height="42"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,102 @@
+﻿<Application x:Class="PMS.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PMS"
+             xmlns:viewModel="clr-namespace:PMS.MVVM.ViewModel"
+             xmlns:view="clr-namespace:PMS.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/HomeButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/CircleButton.xaml"/>
+                <ResourceDictionary Source="Theme/AddBtnStyle.xaml"/>
+                <ResourceDictionary Source="Theme/RoundedButtonStyle.xaml"/>
+                <ResourceDictionary Source="Theme/ProjectScrollBar.xaml"/>
+                <ResourceDictionary Source="Theme/LoginTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ProjectTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxFilterTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxFormNameTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxDocumentNameTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxMemberFilterTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <view:LoginView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:AllProjectsViewModel}">
+                <view:AllProjectsView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:CreateProjectViewModel}">
+                <view:CreateProjectView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:RoleListPageViewModel}">
+                <view:RoleListPageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ProjectDetailsViewModel}">
+                <view:ProjectDetailsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:FormListPageViewModel}">
+                <view:FormListPageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DocumentListPageViewModel}">
+                <view:DocumentListPageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EDWStagesViewModel}">
+                <view:EDWStagesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:SRWStagesViewModel}">
+                <view:SRWStagesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DocumentDetailsViewModel}">
+                <view:DocumentDetailsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:MemberListPageViewModel}">
+                <view:MemberListPageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:TmpRoleSelectionViewModel}">
+                <view:TmpRoleSelectionView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EmployeeListPageViewModel}">
+                <view:EmployeeListPageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:StageLinesViewModel}">
+                <view:StageLinesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:StageLineInfoViewModel}">
+                <view:StageLineInfoView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ProjectInfoViewModel}">
+                <view:ProjectInfoView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ComponentInfoViewModel}">
+                <view:ComponentInfoView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ComponentProjectRoleViewModel}">
+                <view:ComponentProjectRoleView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:EmployeeInfoViewModel}">
+                <view:EmployeeInfoView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
